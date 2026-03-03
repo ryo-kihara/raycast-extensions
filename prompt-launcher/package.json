@@ -1,0 +1,63 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "chatgpt-prompt-launcher",
+  "title": "ChatGPT Prompt Launcher",
+  "description": "Open ChatGPT with predefined prompts for translation, branch naming, and PR titles",
+  "icon": "command-icon.png",
+  "author": "ryo-kihara",
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "ask-chatgpt",
+      "title": "Ask ChatGPT",
+      "description": "Send a message to ChatGPT with a predefined suffix",
+      "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "translateSuffix",
+      "title": "Translate Suffix",
+      "description": "Suffix appended when using the Translate action",
+      "type": "textfield",
+      "default": "日本語なら英語に、英語なら日本語に翻訳して",
+      "required": false
+    },
+    {
+      "name": "branchNameSuffix",
+      "title": "Branch Name Suffix",
+      "description": "Suffix appended when using the Branch Name action",
+      "type": "textfield",
+      "default": "シンプルなブランチ名にして",
+      "required": false
+    },
+    {
+      "name": "prTitleSuffix",
+      "title": "PR Title Suffix",
+      "description": "Suffix appended when using the PR Title action",
+      "type": "textfield",
+      "default": "PRタイトルにして",
+      "required": false
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.93.3",
+    "@raycast/utils": "^1.19.1"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^1.0.11",
+    "@types/node": "22.13.14",
+    "@types/react": "19.0.12",
+    "eslint": "^8.57.1",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
+  },
+  "scripts": {
+    "build": "ray build",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "prepublishOnly": "echo \"Error: no publish\" && exit 1",
+    "publish": "npx @raycast/api@latest publish"
+  }
+}
