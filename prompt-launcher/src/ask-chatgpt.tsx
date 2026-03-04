@@ -50,12 +50,24 @@ async function openChatGPT(message: string, suffix: string) {
 }
 
 const defaultItems = [
-  { title: "ブランチ名", icon: Icon.Code, suffixKey: "branchNameSuffix" as const },
-  { title: "PRタイトル", icon: Icon.Document, suffixKey: "prTitleSuffix" as const },
+  {
+    title: "ブランチ名",
+    icon: Icon.Code,
+    suffixKey: "branchNameSuffix" as const,
+  },
+  {
+    title: "PRタイトル",
+    icon: Icon.Document,
+    suffixKey: "prTitleSuffix" as const,
+  },
   { title: "翻訳", icon: Icon.Globe, suffixKey: "translateSuffix" as const },
 ];
 
-function CreateSnippetForm({ onCreate }: { onCreate: (snippet: Snippet) => void }) {
+function CreateSnippetForm({
+  onCreate,
+}: {
+  onCreate: (snippet: Snippet) => void;
+}) {
   const { pop } = useNavigation();
 
   return (
@@ -78,7 +90,11 @@ function CreateSnippetForm({ onCreate }: { onCreate: (snippet: Snippet) => void 
       }
     >
       <Form.TextField id="title" title="Title" placeholder="スニペット名" />
-      <Form.TextArea id="suffix" title="Suffix" placeholder="ChatGPT に追加するサフィックス" />
+      <Form.TextArea
+        id="suffix"
+        title="Suffix"
+        placeholder="ChatGPT に追加するサフィックス"
+      />
     </Form>
   );
 }
@@ -105,7 +121,11 @@ export default function AskChatGPT() {
   }
 
   return (
-    <List searchBarPlaceholder="メッセージを入力..." filtering={false} onSearchTextChange={setSearchText}>
+    <List
+      searchBarPlaceholder="メッセージを入力..."
+      filtering={false}
+      onSearchTextChange={setSearchText}
+    >
       <List.Section title="Default">
         {defaultItems.map((item) => (
           <List.Item
@@ -114,7 +134,12 @@ export default function AskChatGPT() {
             icon={item.icon}
             actions={
               <ActionPanel>
-                <Action title={item.title} onAction={() => openChatGPT(searchText, preferences[item.suffixKey])} />
+                <Action
+                  title={item.title}
+                  onAction={() =>
+                    openChatGPT(searchText, preferences[item.suffixKey])
+                  }
+                />
                 <Action.Push
                   title="Create Snippet"
                   icon={Icon.Plus}
@@ -136,7 +161,10 @@ export default function AskChatGPT() {
               accessories={[{ text: snippet.suffix, tooltip: snippet.suffix }]}
               actions={
                 <ActionPanel>
-                  <Action title={snippet.title} onAction={() => openChatGPT(searchText, snippet.suffix)} />
+                  <Action
+                    title={snippet.title}
+                    onAction={() => openChatGPT(searchText, snippet.suffix)}
+                  />
                   <Action.Push
                     title="Create Snippet"
                     icon={Icon.Plus}
